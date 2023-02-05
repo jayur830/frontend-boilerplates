@@ -1,0 +1,77 @@
+{
+  "name": "nextjs-with-typescript-graphql-mui-zustand",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "rm -rf ./.next && rm -rf ./out && next build && next export",
+    "start": "next start",
+    "preview": "http-server ./out -p 4000",
+    "lint": "next lint --fix --config ./.eslintrc --ignore-path ./.eslintignore . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|md)\" --ignore-path ./.prettierignore",
+    "codegen": "graphql-codegen --config codegen.yml"
+  },
+  "dependenciesMeta": {
+    "next@13.1.6": {
+      "unplugged": true
+    }
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.6",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/lab": "^5.0.0-alpha.118",
+    "@mui/material": "^5.11.7",
+    "@next/font": "13.1.6",
+    "apollo-server-core": "^3.11.1",
+    "apollo-server-micro": "^3.11.1",
+    "dayjs": "^1.11.7",
+    "eslint": "8.33.0",
+    "eslint-config-next": "13.1.6",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "lodash": "^4.17.21",
+    "micro": "^10.0.1",
+    "next": "13.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "4.9.5",
+    "zustand": "^4.3.2"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.16.5",
+    "@graphql-codegen/typescript": "^2.8.8",
+    "@graphql-codegen/typescript-operations": "^2.5.13",
+    "@svgr/webpack": "^6.5.1",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "18.11.18",
+    "@types/prettier": "^2.7.2",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "@types/uuid": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "http-server": "^14.1.1",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.3",
+    "sass": "^1.58.0",
+    "simple-git-hooks": "^2.8.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "yarn lint-staged"
+  },
+  "lint-staged": {
+    "!(*test).{ts,tsx}": [
+      "next lint --fix --config ./.eslintrc --ignore-path ./.eslintignore . --ext .tsx,.ts",
+      "prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|md)\" --ignore-path ./.prettierignore"
+    ],
+    "*.{json,md,html,scss}": [
+      "prettier --write --ignore-path ./.prettierignore"
+    ]
+  }
+}
